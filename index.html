@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nota Inovasi Digital — HPK 1</title>
+<style>
+:root{
+  --bg:#f5f8ff; --card:#ffffff; --ink:#172033; --muted:#667085;
+  --primary:#2563eb; --primary2:#7c3aed; --teal:#0f766e;
+  --soft:#eaf1ff; --soft2:#f1ebff; --border:#e3e8f2;
+  --shadow:0 12px 30px rgba(31,41,55,.08); --radius:20px;
+}
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}
+header{background:linear-gradient(135deg,#173b8f 0%,#2563eb 52%,#7c3aed 100%);color:white;padding:48px 22px 42px;position:relative;overflow:hidden}
+header:after{content:"";position:absolute;width:300px;height:300px;border-radius:50%;right:-90px;top:-120px;background:rgba(255,255,255,.10)}
+.hero{max-width:1180px;margin:auto;position:relative;z-index:1}
+.badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);padding:7px 13px;border-radius:999px;font-size:13px;font-weight:700;letter-spacing:.3px}
+h1{font-size:clamp(30px,5vw,52px);line-height:1.08;margin:16px 0 10px}
+.hero p{max-width:800px;margin:0;color:#eaf0ff;font-size:17px}
+.container{max-width:1180px;margin:auto;padding:24px 18px 70px}
+.toolbar{position:sticky;top:0;z-index:10;background:rgba(245,248,255,.93);backdrop-filter:blur(10px);padding:14px 0}
+.nav{display:flex;gap:9px;flex-wrap:wrap;align-items:center}
+.nav a,.nav button{border:1px solid var(--border);background:white;color:var(--ink);text-decoration:none;padding:9px 13px;border-radius:12px;font-weight:700;font-size:13px;cursor:pointer}
+.nav a:hover,.nav button:hover{border-color:#a8bff7;color:var(--primary)}
+.search{flex:1;min-width:220px;padding:10px 14px;border:1px solid var(--border);border-radius:12px;background:white;font-size:14px;outline:none}
+.search:focus{border-color:#7aa2ff;box-shadow:0 0 0 4px #dbe7ff}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
+.topic{grid-column:span 12;margin-top:24px}
+.topic h2{margin:0 0 5px;font-size:28px}
+.topic-sub{color:var(--muted);margin:0 0 20px}
+.two{grid-column:span 6}
+.three{grid-column:span 4}
+@media(max-width:850px){.two,.three{grid-column:span 12}}
+h3{margin:4px 0 10px;font-size:19px}
+h4{margin:16px 0 7px}
+ul{padding-left:21px;margin-top:7px}
+li{margin:5px 0}
+.key{border-left:4px solid var(--primary);padding:12px 15px;background:var(--soft);border-radius:12px;margin:12px 0}
+.purple{border-left-color:var(--primary2);background:var(--soft2)}
+.teal{border-left-color:var(--teal);background:#e8f7f4}
+.term{display:inline-block;background:#eef2ff;color:#2748a6;padding:3px 8px;border-radius:8px;font-weight:800;margin:2px 0}
+.compare{width:100%;border-collapse:collapse;margin-top:10px;font-size:14px}
+.compare th,.compare td{border:1px solid var(--border);padding:11px;text-align:left;vertical-align:top}
+.compare th{background:#f3f6fc}
+.flow{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.step{flex:1;min-width:145px;background:#f7f9fd;border:1px solid var(--border);border-radius:14px;padding:13px;text-align:center}
+.step b{display:block;color:var(--primary);margin-bottom:4px}
+.pill{display:inline-block;margin:4px 4px 4px 0;padding:7px 10px;border-radius:10px;background:#f0f4ff;border:1px solid #dce5ff;font-size:13px;font-weight:700}
+details{border:1px solid var(--border);border-radius:14px;margin:9px 0;background:#fff}
+summary{cursor:pointer;padding:13px 15px;font-weight:800}
+.details-body{padding:0 15px 15px;color:#4b5563}
+.flash-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:700px){.flash-grid{grid-template-columns:1fr}}
+.flash{min-height:130px;padding:17px;border-radius:16px;background:linear-gradient(145deg,#f6f9ff,#fff);border:1px solid var(--border);cursor:pointer}
+.flash small{color:var(--muted)}
+.flash .answer{display:none;margin-top:9px;color:#344054}
+.flash.open .answer{display:block}
+.q{padding:16px;border:1px solid var(--border);border-radius:14px;margin:10px 0}
+.q button{margin:5px 5px 0 0;border:1px solid #d7deeb;background:#fff;border-radius:10px;padding:8px 11px;cursor:pointer}
+.q button:hover{background:#f1f5ff}
+.feedback{margin-top:9px;font-weight:700}
+mark{background:#fff0a8;padding:1px 3px;border-radius:4px}
+footer{text-align:center;color:var(--muted);font-size:13px;padding:25px}
+.hidden{display:none!important}
+.backtop{position:fixed;right:18px;bottom:18px;border:0;background:#1f3fae;color:white;border-radius:50%;width:45px;height:45px;cursor:pointer;box-shadow:var(--shadow)}
+</style>
+</head>
+<body>
+<header>
+  <div class="hero">
+    <span class="badge">INOVASI DIGITAL • HPK 1 • TAJUK 1–3</span>
+    <h1>Nota Pantas Inovasi Digital</h1>
+    <p>Penguasaan konsep dan proses inovasi, Pembelajaran Trialogikal, serta penjanaan idea inovasi digital untuk PdP Bahasa Melayu — disusun khas sebagai nota ulang kaji kuiz.</p>
+  </div>
+</header>
+
+<div class="container">
+  <div class="toolbar">
+    <div class="nav">
+      <input id="search" class="search" placeholder="Cari istilah: inovasi, trialogikal, design thinking, mindtools..." aria-label="Cari nota">
+      <a href="#t1">Tajuk 1</a><a href="#t2">Tajuk 2</a><a href="#t3">Tajuk 3</a>
+      <a href="#ringkas">Ringkasan</a><a href="#kuiz">Latihan</a>
+    </div>
+  </div>
+
+  <div id="content">
+
+  <section id="t1" class="topic card">
+    <h2>01. Konsep dan Proses Inovasi</h2>
+    <p class="topic-sub">Definisi • proses inovasi & pemikiran reka bentuk • model inovasi pendidikan • faktor inovasi • hak cipta • penerimaan • penyebaran</p>
+
+    <div class="grid">
+      <div class="two">
+        <h3>Apa itu inovasi?</h3>
+        <div class="key"><b>Inovasi</b> ialah proses menghasilkan, mengubah suai atau melaksanakan idea/kaedah/produk baharu atau yang ditambah baik supaya memberikan <b>nilai dan penyelesaian</b> kepada sesuatu keperluan atau masalah.</div>
+        <h4>Bezakan 3 istilah penting</h4>
+        <table class="compare">
+          <tr><th>Istilah</th><th>Maksud mudah</th></tr>
+          <tr><td><b>Kreativiti</b></td><td>Keupayaan menghasilkan idea yang baharu, asli atau bernilai.</td></tr>
+          <tr><td><b>Reka cipta / invention</b></td><td>Menghasilkan sesuatu ciptaan atau penyelesaian yang baharu.</td></tr>
+          <tr><td><b>Inovasi</b></td><td>Idea/ciptaan dilaksanakan, ditambah baik atau digunakan sehingga menghasilkan nilai.</td></tr>
+        </table>
+      </div>
+
+      <div class="two">
+        <h3>Proses inovasi</h3>
+        <div class="flow">
+          <div class="step"><b>1. Kenal pasti</b>Masalah & keperluan</div>
+          <div class="step"><b>2. Jana idea</b>Pelbagai penyelesaian</div>
+          <div class="step"><b>3. Pilih</b>Idea paling sesuai</div>
+          <div class="step"><b>4. Bangunkan</b>Prototaip / produk</div>
+          <div class="step"><b>5. Uji & baik</b>Dapatkan maklum balas</div>
+          <div class="step"><b>6. Laksana</b>Gunakan dan sebarkan</div>
+        </div>
+        <div class="key purple"><b>Kata kunci kuiz:</b> inovasi bukan sekadar “idea baharu”. Idea perlu diterjemahkan kepada tindakan/pelaksanaan dan memberi nilai.</div>
+      </div>
+
+      <div class="two">
+        <h3>Design Thinking / Pemikiran Reka Bentuk</h3>
+        <p>Pendekatan penyelesaian masalah yang berpusatkan pengguna. Ia membantu guru memahami keperluan murid sebelum membina penyelesaian.</p>
+        <div class="pill">Empathize — Fahami pengguna</div>
+        <div class="pill">Define — Tentukan masalah</div>
+        <div class="pill">Ideate — Jana idea</div>
+        <div class="pill">Prototype — Bina prototaip</div>
+        <div class="pill">Test — Uji & dapatkan maklum balas</div>
+        <div class="key teal"><b>Contoh BM:</b> Murid sukar membina ayat → guru temu bual/observasi → kenal pasti punca → jana idea aktiviti digital → bina prototaip → uji dengan murid → tambah baik.</div>
+      </div>
+
+      <div class="two">
+        <h3>Model inovasi pendidikan</h3>
+        <p>Model inovasi menerangkan bagaimana idea baharu boleh dibentuk, diuji, diterima dan dilaksanakan dalam konteks pendidikan.</p>
+        <ul>
+          <li><b>Berpusatkan masalah:</b> bermula daripada masalah sebenar PdP.</li>
+          <li><b>Berpusatkan pengguna:</b> mengambil kira guru, murid dan komuniti.</li>
+          <li><b>Berorientasikan penambahbaikan:</b> inovasi boleh melalui kitaran uji → maklum balas → baik pulih.</li>
+          <li><b>Berorientasikan pelaksanaan:</b> idea perlu sesuai dengan masa, sumber, kemahiran dan konteks sekolah.</li>
+        </ul>
+      </div>
+
+      <div class="two">
+        <h3>Faktor yang mempengaruhi inovasi</h3>
+        <ul>
+          <li><b>Trend pendidikan masa hadapan:</b> pembelajaran diperibadikan, kolaboratif, fleksibel dan berasaskan digital.</li>
+          <li><b>Revolusi Industri 4.0:</b> AI, automasi, data, Internet of Things, pengkomputeran awan dan teknologi digital.</li>
+          <li><b>Keperluan murid:</b> tahap kebolehan, minat, gaya belajar dan masalah pembelajaran.</li>
+          <li><b>Sokongan organisasi:</b> kepimpinan, kemudahan, masa, latihan dan budaya inovasi.</li>
+          <li><b>Kompetensi guru:</b> pengetahuan pedagogi, kandungan dan teknologi.</li>
+        </ul>
+      </div>
+
+      <div class="two">
+        <h3>Hak cipta, penerimaan & penyebaran</h3>
+        <details><summary>Hak cipta</summary><div class="details-body">Hak undang-undang terhadap karya asli. Dalam inovasi digital, guru perlu menghormati pemilik karya, menggunakan bahan mengikut lesen/kebenaran dan menghasilkan bahan sendiri apabila sesuai.</div></details>
+        <details><summary>Penerimaan inovasi</summary><div class="details-body">Tahap kesediaan individu atau organisasi untuk menerima dan menggunakan inovasi. Faktor seperti manfaat yang dirasai, kesesuaian, kemudahan penggunaan, kos, risiko dan sokongan boleh mempengaruhi penerimaan.</div></details>
+        <details><summary>Penyebaran inovasi</summary><div class="details-body">Proses inovasi diperkenalkan dan dikongsi kepada lebih ramai pengguna sehingga penggunaannya berkembang. Penyebaran memerlukan komunikasi, bukti manfaat, sokongan dan peluang untuk mencuba.</div></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="t2" class="topic card">
+    <h2>02. Pengenalan Pembelajaran Trialogikal</h2>
+    <p class="topic-sub">Konsep pemikiran trialogikal • model generik • alat pembelajaran trialogikal • mindtools • inovasi digital • teknologi disruptif</p>
+
+    <div class="grid">
+      <div class="two">
+        <h3>Apakah Pembelajaran Trialogikal?</h3>
+        <div class="key"><b>Pembelajaran Trialogikal</b> menekankan pembelajaran melalui proses membina dan mengembangkan <b>objek pengetahuan</b> bersama orang lain dalam komuniti, bukan sekadar menerima maklumat.</div>
+        <h4>3 unsur utama</h4>
+        <div class="pill">Subjek — pelajar/guru</div>
+        <div class="pill">Komuniti — rakan, guru, pakar</div>
+        <div class="pill">Objek pengetahuan — idea/artefak/produk yang dibangunkan</div>
+      </div>
+
+      <div class="two">
+        <h3>Bezakan pembelajaran</h3>
+        <table class="compare">
+          <tr><th>Jenis</th><th>Fokus utama</th></tr>
+          <tr><td><b>Monologikal</b></td><td>Individu menerima atau menguasai pengetahuan.</td></tr>
+          <tr><td><b>Dialogikal</b></td><td>Pengetahuan dibina melalui interaksi dan perbincangan.</td></tr>
+          <tr><td><b>Trialogikal</b></td><td>Individu + komuniti membangunkan objek/artefak pengetahuan secara bersama dan berterusan.</td></tr>
+        </table>
+      </div>
+
+      <div class="two">
+        <h3>Model generik Pembelajaran Trialogikal</h3>
+        <div class="flow">
+          <div class="step"><b>Subjek</b>Siapa yang belajar?</div>
+          <div class="step"><b>Komuniti</b>Siapa bekerjasama?</div>
+          <div class="step"><b>Objek</b>Apa yang dibina/dibangunkan?</div>
+          <div class="step"><b>Iterasi</b>Semak, kongsi, tambah baik</div>
+        </div>
+        <div class="key purple"><b>Formula ingatan:</b> S + K + O → bina → kongsi → maklum balas → tambah baik.</div>
+      </div>
+
+      <div class="two">
+        <h3>Contoh dalam PdP Bahasa Melayu</h3>
+        <p><b>Projek “Bank Ayat Digital”:</b> murid bekerja dalam kumpulan untuk membina koleksi ayat berdasarkan tema. Guru membimbing, murid menyumbang, komuniti memberi maklum balas dan bank ayat ditambah baik dari semasa ke semasa.</p>
+        <p><b>Objek pengetahuan:</b> bank ayat/infografik/peta konsep/video/podcast/cerita digital — bukan sekadar perbincangan lisan.</p>
+      </div>
+
+      <div class="two">
+        <h3>Alat untuk pemikiran (Mindtools)</h3>
+        <p><span class="term">Mindtools</span> ialah alat yang membantu pelajar menggunakan teknologi untuk menyusun, menganalisis, membina dan mengembangkan pemikiran.</p>
+        <ul>
+          <li>Peta minda / peta konsep</li>
+          <li>Jadual perbandingan dan matriks</li>
+          <li>Hamparan data</li>
+          <li>Papan kolaboratif digital</li>
+          <li>Perisian persembahan / visualisasi</li>
+        </ul>
+      </div>
+
+      <div class="two">
+        <h3>Teknologi disruptif dalam PdP</h3>
+        <div class="key teal"><b>Teknologi disruptif</b> ialah teknologi yang berpotensi mengubah cara sesuatu proses atau perkhidmatan dilaksanakan dengan memperkenalkan pendekatan baharu.</div>
+        <p>Contoh: <b>Kecerdasan Buatan (AI)</b>, pembelajaran adaptif, automasi, realiti terimbuh dan analitik pembelajaran.</p>
+        <p><b>Prinsip penting:</b> teknologi bukan tujuan akhir. Teknologi dipilih kerana membantu menyelesaikan masalah pembelajaran atau menghasilkan pengalaman/produk yang lebih bermakna.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="t3" class="topic card">
+    <h2>03. Penjanaan Idea Inovasi Digital untuk PdP Bahasa Melayu</h2>
+    <p class="topic-sub">Kemahiran bahasa • aspek bahasa • analisis keperluan & kehendak • pemikiran komputasional • daya cipta</p>
+
+    <div class="grid">
+      <div class="two">
+        <h3>Langkah menjana idea inovasi</h3>
+        <div class="flow">
+          <div class="step"><b>1</b>Kenal pasti pengguna</div>
+          <div class="step"><b>2</b>Analisis masalah</div>
+          <div class="step"><b>3</b>Kenal pasti keperluan</div>
+          <div class="step"><b>4</b>Jana banyak idea</div>
+          <div class="step"><b>5</b>Pilih idea sesuai</div>
+          <div class="step"><b>6</b>Prototaip & uji</div>
+        </div>
+      </div>
+
+      <div class="two">
+        <h3>Keperluan vs kehendak</h3>
+        <table class="compare">
+          <tr><th>Keperluan</th><th>Kehendak</th></tr>
+          <tr><td>Perkara yang diperlukan untuk menyelesaikan masalah pembelajaran.</td><td>Ciri tambahan yang menarik tetapi tidak semestinya wajib.</td></tr>
+          <tr><td>Contoh: murid perlu maklum balas pembetulan ayat.</td><td>Contoh: mahu animasi tambahan atau lencana permainan.</td></tr>
+        </table>
+        <div class="key">Idea yang baik mengutamakan <b>keperluan pembelajaran</b> sebelum hiasan atau ciri tambahan.</div>
+      </div>
+
+      <div class="three">
+        <h3>🎧 Kemahiran Mendengar</h3>
+        <ul><li>Audio cerita + soalan interaktif</li><li>AI untuk menghasilkan variasi audio</li><li>Aktiviti kenal pasti maklumat tersurat</li></ul>
+      </div>
+      <div class="three">
+        <h3>🗣️ Kemahiran Bertutur</h3>
+        <ul><li>Rakaman suara murid</li><li>Simulasi dialog digital</li><li>Maklum balas sebutan/pengucapan</li></ul>
+      </div>
+      <div class="three">
+        <h3>📖 Kemahiran Membaca</h3>
+        <ul><li>Teks interaktif</li><li>Kuiz kefahaman adaptif</li><li>Glosari digital dan anotasi</li></ul>
+      </div>
+      <div class="three">
+        <h3>✍️ Kemahiran Menulis</h3>
+        <ul><li>Pembinaan ayat digital</li><li>Semakan draf dan maklum balas</li><li>Kolaborasi menghasilkan cerita</li></ul>
+      </div>
+
+      <div class="two">
+        <h3>Aspek Seni Bahasa</h3>
+        <p>Idea digital boleh digunakan untuk membantu murid meneroka bahasa secara kreatif.</p>
+        <span class="pill">Pantun</span><span class="pill">Syair</span><span class="pill">Cerita</span><span class="pill">Peribahasa</span><span class="pill">Puisi</span><span class="pill">Drama</span>
+        <div class="key purple"><b>Contoh idea:</b> “Studio Cerita Digital” — murid membina cerita bergambar, memilih watak, menyusun plot dan merakam penceritaan.</div>
+      </div>
+
+      <div class="two">
+        <h3>Aspek Tatabahasa</h3>
+        <p>Inovasi digital boleh membantu murid mengenal, menggunakan dan membetulkan struktur bahasa melalui latihan yang interaktif.</p>
+        <span class="pill">Kata nama</span><span class="pill">Kata kerja</span><span class="pill">Imbuhan</span><span class="pill">Ayat</span><span class="pill">Frasa</span><span class="pill">Kesalahan bahasa</span>
+        <div class="key teal"><b>Contoh idea:</b> “Detektif Tatabahasa” — murid mengesan kesalahan dalam ayat, memilih pembetulan dan menerangkan sebab.</div>
+      </div>
+
+      <div class="two">
+        <h3>Pemikiran Komputasional</h3>
+        <p>Kaedah berfikir secara sistematik untuk memecahkan masalah dan membina penyelesaian.</p>
+        <div class="key">
+          <b>4 kata kunci utama:</b>
+          <ol>
+            <li><b>Perekaan / decomposition:</b> pecahkan masalah besar kepada bahagian kecil.</li>
+            <li><b>Pengecaman corak:</b> cari persamaan atau pola.</li>
+            <li><b>Pengabstrakan:</b> fokus pada maklumat penting dan abaikan perkara tidak perlu.</li>
+            <li><b>Algoritma:</b> susun langkah penyelesaian secara teratur.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="two">
+        <h3>Contoh pemikiran komputasional dalam BM</h3>
+        <p><b>Masalah:</b> murid sukar membina karangan.</p>
+        <ul>
+          <li><b>Decomposition:</b> pecahkan karangan kepada pendahuluan, isi dan penutup.</li>
+          <li><b>Corak:</b> kenal pasti struktur karangan yang berkesan.</li>
+          <li><b>Abstraksi:</b> pilih isi dan kata kunci utama.</li>
+          <li><b>Algoritma:</b> ikut langkah bina idea → susun isi → bina ayat → semak → baik pulih.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="ringkas" class="topic card">
+    <h2>🧠 Ringkasan 1 Minit Sebelum Kuiz</h2>
+    <div class="flash-grid">
+      <div class="flash" onclick="this.classList.toggle('open')"><b>Inovasi</b><br><small>Tekan untuk lihat kata kunci</small><div class="answer">Idea/ciptaan yang dilaksanakan atau ditambah baik untuk menghasilkan nilai dan menyelesaikan keperluan.</div></div>
+      <div class="flash" onclick="this.classList.toggle('open')"><b>Design Thinking</b><br><small>Tekan untuk lihat 5 langkah</small><div class="answer">Empathize → Define → Ideate → Prototype → Test.</div></div>
+      <div class="flash" onclick="this.classList.toggle('open')"><b>Trialogikal</b><br><small>Tekan untuk lihat 3 unsur</small><div class="answer">Subjek + Komuniti + Objek Pengetahuan.</div></div>
+      <div class="flash" onclick="this.classList.toggle('open')"><b>Mindtools</b><br><small>Tekan untuk lihat fungsi</small><div class="answer">Alat digital yang menyokong pemikiran, pembinaan, penyusunan dan analisis pengetahuan.</div></div>
+      <div class="flash" onclick="this.classList.toggle('open')"><b>IR 4.0</b><br><small>Tekan untuk lihat contoh</small><div class="answer">AI, automasi, data, IoT, pengkomputeran awan dan teknologi digital.</div></div>
+      <div class="flash" onclick="this.classList.toggle('open')"><b>Pemikiran Komputasional</b><br><small>Tekan untuk lihat 4 elemen</small><div class="answer">Pecahkan masalah → kenal corak → abstraksi → algoritma.</div></div>
+    </div>
+
+    <h3 style="margin-top:28px">Peta hubungan keseluruhan</h3>
+    <div class="key">
+      <b>Masalah/keperluan PdP</b> → <b>Analisis pengguna</b> → <b>Jana idea</b> → <b>Reka bentuk/prototaip</b> → <b>Uji & tambah baik</b> → <b>Inovasi dilaksanakan</b> → <b>Penerimaan & penyebaran</b>
+    </div>
+    <p><b>Trialogikal</b> menguatkan proses kerana guru/murid/komuniti membangunkan <b>objek pengetahuan</b> bersama. <b>Teknologi digital</b> pula menjadi alat untuk menyokong proses, bukan matlamat semata-mata.</p>
+  </section>
+
+  <section id="kuiz" class="topic card">
+    <h2>✏️ Latihan Kendiri</h2>
+    <p class="topic-sub">Klik jawapan untuk semak pemahaman. Ini latihan ringkas, bukan pengganti nota kuliah.</p>
+
+    <div class="q"><b>1. Apakah ciri paling penting yang membezakan inovasi daripada sekadar idea?</b><br>
+      <button onclick="ans(this,false,'Inovasi melibatkan pelaksanaan/penambahbaikan idea sehingga menghasilkan nilai.')">Idea itu mesti unik sahaja</button>
+      <button onclick="ans(this,true,'Inovasi melibatkan pelaksanaan atau penambahbaikan yang memberi nilai.')">Idea dilaksanakan dan memberi nilai</button>
+      <button onclick="ans(this,false,'Teknologi tidak semestinya diperlukan untuk sesuatu inovasi.')">Mesti menggunakan teknologi digital</button>
+      <button onclick="ans(this,false,'Sesuatu inovasi tidak semestinya bermula dengan produk fizikal.')">Mesti menghasilkan produk fizikal</button>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="q"><b>2. Susunan Design Thinking yang betul ialah...</b><br>
+      <button onclick="ans(this,false,'Susunan ini menukar kedudukan fasa memahami pengguna dan mentakrif masalah.')">Define → Empathize → Ideate → Test → Prototype</button>
+      <button onclick="ans(this,true,'Urutan umum ialah Empathize → Define → Ideate → Prototype → Test.')">Empathize → Define → Ideate → Prototype → Test</button>
+      <button onclick="ans(this,false,'Prototype biasanya dibina selepas idea dijana.')">Ideate → Empathize → Prototype → Define → Test</button>
+      <button onclick="ans(this,false,'Test bukan fasa pertama dalam urutan umum.')">Test → Define → Ideate → Prototype → Empathize</button>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="q"><b>3. Dalam Pembelajaran Trialogikal, apakah objek pengetahuan?</b><br>
+      <button onclick="ans(this,false,'Subjek merujuk kepada individu yang belajar atau terlibat.')">Guru sahaja</button>
+      <button onclick="ans(this,false,'Komuniti ialah pihak yang bekerjasama dalam proses pembelajaran.')">Kumpulan murid sahaja</button>
+      <button onclick="ans(this,true,'Objek pengetahuan ialah idea, artefak atau produk yang dibina dan dikembangkan bersama.')">Idea atau artefak yang dibangunkan bersama</button>
+      <button onclick="ans(this,false,'Teknologi ialah alat yang boleh menyokong proses, bukan definisi objek pengetahuan itu sendiri.')">Aplikasi digital semata-mata</button>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="q"><b>4. Antara berikut, yang manakah contoh pemikiran komputasional?</b><br>
+      <button onclick="ans(this,true,'Memecahkan karangan kepada bahagian kecil ialah decomposition.')">Memecahkan karangan kepada pendahuluan, isi dan penutup</button>
+      <button onclick="ans(this,false,'Memilih warna poster sahaja bukan contoh utama pemikiran komputasional.')">Memilih warna poster</button>
+      <button onclick="ans(this,false,'Hiasan visual tidak dengan sendirinya menunjukkan pemikiran komputasional.')">Menambah animasi tanpa tujuan pembelajaran</button>
+      <button onclick="ans(this,false,'Penggunaan aplikasi semata-mata tidak semestinya melibatkan pemikiran komputasional.')">Muat turun aplikasi</button>
+      <div class="feedback"></div>
+    </div>
+  </section>
+  </div>
+</div>
+
+<footer>Nota ulang kaji HPK 1 • Tajuk 1–3 • Inovasi Digital dalam Pendidikan Bahasa Melayu</footer>
+<button class="backtop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Kembali ke atas">↑</button>
+
+<script>
+function ans(btn,correct,msg){
+  const box=btn.parentElement;
+  const f=box.querySelector('.feedback');
+  f.textContent=msg;
+  f.style.color=correct?'#087443':'#b42318';
+  box.querySelectorAll('button').forEach(b=>b.style.outline='');
+  btn.style.outline=correct?'3px solid #8bd8b4':'3px solid #f3a4a4';
+}
+const search=document.getElementById('search');
+search.addEventListener('input',()=>{
+  const term=search.value.trim().toLowerCase();
+  document.querySelectorAll('#content .topic').forEach(section=>{
+    if(!term){section.classList.remove('hidden'); return}
+    section.classList.toggle('hidden', !section.innerText.toLowerCase().includes(term));
+  });
+});
+</script>
+</body>
+</html>
